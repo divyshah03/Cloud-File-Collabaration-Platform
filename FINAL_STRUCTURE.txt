@@ -1,0 +1,175 @@
+full-stack-professional/
+│
+├── backend/                                 # Spring Boot 3 Backend (Java 17)
+│   ├── src/
+│   │   ├── main/
+│   │   │   ├── java/com/amigoscode/
+│   │   │   │   ├── Main.java                    # Application entry point
+│   │   │   │   │
+│   │   │   │   ├── domain/                      # Domain Layer (Entities)
+│   │   │   │   │   ├── user/
+│   │   │   │   │   │   ├── User.java
+│   │   │   │   │   │   └── Role.java
+│   │   │   │   │   └── file/
+│   │   │   │   │       └── File.java
+│   │   │   │   │
+│   │   │   │   ├── application/                 # Application Layer (Business Logic)
+│   │   │   │   │   ├── email/
+│   │   │   │   │   │   ├── EmailService.java
+│   │   │   │   │   │   ├── EmailServiceInterface.java
+│   │   │   │   │   │   ├── EmailVerificationService.java
+│   │   │   │   │   │   └── NoOpEmailService.java
+│   │   │   │   │   ├── file/
+│   │   │   │   │   │   ├── FileDTOMapper.java
+│   │   │   │   │   │   └── FileService.java
+│   │   │   │   │   └── user/
+│   │   │   │   │       ├── AuthenticationService.java
+│   │   │   │   │       ├── UserDTOMapper.java
+│   │   │   │   │       └── UserService.java
+│   │   │   │   │
+│   │   │   │   ├── infrastructure/              # Infrastructure Layer
+│   │   │   │   │   ├── config/
+│   │   │   │   │   │   └── CorsConfig.java
+│   │   │   │   │   ├── persistence/
+│   │   │   │   │   │   ├── file/
+│   │   │   │   │   │   │   └── FileRepository.java
+│   │   │   │   │   │   └── user/
+│   │   │   │   │   │       └── UserRepository.java
+│   │   │   │   │   ├── security/
+│   │   │   │   │   │   ├── JWTAuthenticationFilter.java
+│   │   │   │   │   │   ├── JWTUtil.java
+│   │   │   │   │   │   ├── SecurityConfig.java
+│   │   │   │   │   │   ├── SecurityFilterChainConfig.java
+│   │   │   │   │   │   └── UserDetailsServiceImpl.java
+│   │   │   │   │   └── storage/
+│   │   │   │   │       ├── FakeS3.java
+│   │   │   │   │       ├── S3Buckets.java
+│   │   │   │   │       ├── S3Config.java
+│   │   │   │   │       └── S3Service.java
+│   │   │   │   │
+│   │   │   │   ├── presentation/                # Presentation Layer (REST API)
+│   │   │   │   │   ├── controller/
+│   │   │   │   │   │   ├── AuthController.java
+│   │   │   │   │   │   ├── FileController.java
+│   │   │   │   │   │   └── PingController.java
+│   │   │   │   │   └── dto/
+│   │   │   │   │       ├── file/
+│   │   │   │   │       │   ├── FileDTO.java
+│   │   │   │   │       │   └── FileUploadResponse.java
+│   │   │   │   │       └── user/
+│   │   │   │   │           ├── AuthenticationRequest.java
+│   │   │   │   │           ├── AuthenticationResponse.java
+│   │   │   │   │           ├── EmailVerificationRequest.java
+│   │   │   │   │           ├── UserDTO.java
+│   │   │   │   │           └── UserRegistrationRequest.java
+│   │   │   │   │
+│   │   │   │   └── shared/                      # Shared Utilities
+│   │   │   │       └── exception/
+│   │   │   │           ├── ApiError.java
+│   │   │   │           ├── DelegatedAuthEntryPoint.java
+│   │   │   │           ├── DuplicateResourceException.java
+│   │   │   │           ├── GlobalExceptionHandler.java
+│   │   │   │           ├── RequestValidationException.java
+│   │   │   │           └── ResourceNotFoundException.java
+│   │   │   │
+│   │   │   └── resources/
+│   │   │       ├── application.yml
+│   │   │       ├── application-test.yml
+│   │   │       └── db/migration/
+│   │   │           ├── V1__Create_Users_Table.sql
+│   │   │           └── V2__Create_Files_Table.sql
+│   │   │
+│   │   └── test/                                # Test files
+│   │       ├── java/com/amigoscode/
+│   │       │   ├── AbstractTestcontainers.java
+│   │       │   ├── TestConfig.java
+│   │       │   └── TestcontainersTest.java
+│   │       └── resources/
+│   │           ├── female.jpeg
+│   │           └── male.jpeg
+│   │
+│   └── pom.xml
+│
+├── frontend/
+│   │
+│   ├── react/                                  # React Frontend (Primary)
+│   │   ├── src/
+│   │   │   ├── api/
+│   │   │   │   └── client.js                   # API client service
+│   │   │   │
+│   │   │   ├── components/                     # Reusable UI Components
+│   │   │   │   ├── file/
+│   │   │   │   │   ├── FileCard.jsx            # File card component
+│   │   │   │   │   └── FileUpload.jsx          # File upload with drag-drop
+│   │   │   │   └── layout/
+│   │   │   │       ├── SideBar.jsx             # Navigation sidebar
+│   │   │   │       └── ProtectedRoute.jsx      # Route guard
+│   │   │   │
+│   │   │   ├── hooks/                          # Custom React Hooks
+│   │   │   │   └── AuthContext.jsx             # Authentication context
+│   │   │   │
+│   │   │   ├── pages/                          # Page Components
+│   │   │   │   ├── auth/
+│   │   │   │   │   ├── email-verification/
+│   │   │   │   │   │   └── EmailVerification.jsx
+│   │   │   │   │   ├── login/
+│   │   │   │   │   │   └── Login.jsx
+│   │   │   │   │   └── signup/
+│   │   │   │   │       └── Signup.jsx
+│   │   │   │   ├── files/
+│   │   │   │   │   ├── Files.jsx               # File list page
+│   │   │   │   │   └── Home.jsx                # Dashboard/home
+│   │   │   │   └── legacy-customers/           # Legacy (not used in app)
+│   │   │   │       ├── CreateCustomerDrawer.jsx
+│   │   │   │       ├── CreateCustomerForm.jsx
+│   │   │   │       ├── CustomerCard.jsx
+│   │   │   │       ├── UpdateCustomerDrawer.jsx
+│   │   │   │       └── UpdateCustomerForm.jsx
+│   │   │   │
+│   │   │   ├── utils/                          # Utility Functions
+│   │   │   │   └── notification.js             # Toast notifications
+│   │   │   │
+│   │   │   ├── assets/                         # Static Assets
+│   │   │   │   └── react.svg
+│   │   │   │
+│   │   │   ├── index.css                       # Global styles
+│   │   │   └── main.jsx                        # Application entry point
+│   │   │
+│   │   ├── public/                             # Public Static Files
+│   │   │   └── vite.svg
+│   │   │
+│   │   ├── Dockerfile                          # Docker configuration
+│   │   ├── index.html                          # HTML template
+│   │   ├── package.json                        # Dependencies
+│   │   ├── vite.config.js                      # Vite configuration
+│   │   └── .env                                # Environment variables (gitignored)
+│   │
+│   └── angular/                                # Angular Frontend (Alternative/Legacy)
+│       └── [Angular application files]
+│
+├── config/                                     # Configuration Files
+│   └── docker-compose.yml                      # Docker Compose config
+│
+├── docker/                                     # Docker Deployment Configs
+│   └── aws/
+│       └── Dockerrun.aws.json                  # AWS Elastic Beanstalk config
+│
+├── docs/                                       # Documentation
+│   ├── API.md                                  # API documentation
+│   ├── ARCHITECTURE.md                         # Architecture overview
+│   ├── CLEANUP_SUMMARY.md                      # Cleanup summary
+│   ├── LEGACY_CODE.md                          # Legacy code notes
+│   ├── PROJECT_STRUCTURE.md                    # Project structure details
+│   ├── TRANSFORMATION_SUMMARY.md               # Transformation details
+│   ├── BACKEND_README.md                       # Backend-specific docs
+│   └── ANGULAR_README.md                       # Angular-specific docs
+│
+├── scripts/                                    # Utility Scripts
+│   ├── setup.sh                                # Setup script
+│   ├── start.sh                                # Start all services
+│   └── stop.sh                                 # Stop all services
+│
+├── logs/                                       # Application logs (gitignored)
+│
+├── .gitignore                                  # Git ignore rules
+└── README.md                                   # Main README

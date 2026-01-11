@@ -1,36 +1,45 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import Customer from './Customer.jsx'
-import {ChakraProvider, Text} from '@chakra-ui/react'
-import { createStandaloneToast } from '@chakra-ui/toast'
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Login from "./components/login/Login.jsx";
-import Signup from "./components/signup/Signup";
-import AuthProvider from "./components/context/AuthContext.jsx";
-import ProtectedRoute from "./components/shared/ProtectedRoute.jsx";
-import './index.css'
-import Home from "./Home.jsx";
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import { ChakraProvider } from '@chakra-ui/react';
+import { createStandaloneToast } from '@chakra-ui/toast';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import Login from './pages/auth/login/Login.jsx';
+import Signup from './pages/auth/signup/Signup.jsx';
+import EmailVerification from './pages/auth/email-verification/EmailVerification.jsx';
+import AuthProvider from './hooks/AuthContext.jsx';
+import ProtectedRoute from './components/layout/ProtectedRoute.jsx';
+import Home from './pages/files/Home.jsx';
+import Files from './pages/files/Files.jsx';
+import './index.css';
 
 const { ToastContainer } = createStandaloneToast();
 
 const router = createBrowserRouter([
     {
-        path: "/",
+        path: '/',
         element: <Login />
     },
     {
-        path: "/signup",
+        path: '/login',
+        element: <Login />
+    },
+    {
+        path: '/signup',
         element: <Signup />
     },
     {
-        path: "dashboard",
-        element: <ProtectedRoute><Home/></ProtectedRoute>
+        path: '/verify-email',
+        element: <EmailVerification />
     },
     {
-        path: "dashboard/customers",
-        element: <ProtectedRoute><Customer /></ProtectedRoute>
+        path: '/dashboard',
+        element: <ProtectedRoute><Home /></ProtectedRoute>
+    },
+    {
+        path: '/dashboard/files',
+        element: <ProtectedRoute><Files /></ProtectedRoute>
     }
-])
+]);
 
 ReactDOM
     .createRoot(document.getElementById('root'))
@@ -42,5 +51,5 @@ ReactDOM
                 </AuthProvider>
                 <ToastContainer />
             </ChakraProvider>
-        </React.StrictMode>,
-    )
+        </React.StrictMode>
+    );

@@ -1,46 +1,133 @@
-**/target/
-**/.idea/
-**/node_modules/
+# IDE and Editor files
+.DS_Store
 **/.DS_Store
-**/*.iml
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.project
+.classpath
+.settings/
+*.iml
+*.sublime-project
+*.sublime-workspace
 
-# Javascript
+# Java / Maven
+backend/target/
+backend/.mvn/
+backend/mvnw
+backend/mvnw.cmd
+*.class
+*.jar
+*.war
+*.ear
+*.log
+*.cache
+**/target/
+**/.mvn/
+
+# Node.js
+**/node_modules/
+**/npm-debug.log*
+**/yarn-debug.log*
+**/yarn-error.log*
+**/pnpm-debug.log*
+**/.pnpm-debug.log*
+**/package-lock.json
+**/.npm
+**/.yarn/cache
+**/.yarn/unplugged
+**/.yarn/build-state.yml
+**/.yarn/install-state.gz
+**/.pnp.*
+
+# Build outputs
+**/dist/
+**/build/
+**/.next/
+**/out/
+**/.sass-cache/
+**/connect.lock
+**/coverage/
+**/.nyc_output/
+**/.angular/cache/
+
+# Environment variables
+**/.env
+**/.env.local
+**/.env.*.local
+**/.env.development.local
+**/.env.test.local
+**/.env.production.local
+
+# Testing
+**/test-results/
+**/coverage/
+**/.jest/
+**/karma.conf.js
 
 # Logs
-logs
+logs/
 *.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-pnpm-debug.log*
 lerna-debug.log*
+.pnpm-debug.log*
 
-dist
-dist-ssr
-*.local
+# OS files
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
 
-# Editor directories and files
-.vscode/*
-!.vscode/extensions.json
-.idea
-.DS_Store
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.old
+*.swp
+*.swo
+*~
 
-# Angular
-**/.angular/cache
-.sass-cache/
-connect.lock
-coverage
-libpeerconnection.log
-testem.log
-typings
+# AWS / Deployment
+**/.serverless/
+**/.aws-sam/
 
-# Visual Studio Code
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-.history/*
+# Local storage (FakeS3)
+**/.filemanager/
+**/.amigoscode/
+**/s3/
+~/.filemanager/
+~/.amigoscode/
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Secrets and credentials
+**/secrets/
+**/*secret*
+**/*credentials*
+**/*key*
+
+# TypeScript
+**/*.tsbuildinfo
+**/.tsbuildinfo
+
+# Spring Boot
+backend/HELP.md
+backend/.mvn/wrapper/maven-wrapper.jar
+
+# React / Vite
+**/dist-ssr/
+**/*.local
+
+# Compiled files
+*.pyc
+__pycache__/
